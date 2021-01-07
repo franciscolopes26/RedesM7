@@ -24,4 +24,6 @@ Route::get('/project', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/projeto/create', [App\Http\Controllers\ProjetoController::class, 'create'])->name('projeto.create');
+Route::get('/projetos', [App\Http\Controllers\ProjetoController::class, 'index'])->name('projetos');
+Route::post('/projetos', [App\Http\Controllers\ProjetoController::class, 'store']);
+Route::get('/projetos/create', [App\Http\Controllers\ProjetoController::class, 'create'])->name('projetos.create');

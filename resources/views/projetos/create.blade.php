@@ -16,7 +16,7 @@
               </div>
             </div><!-- /.container-fluid -->
           </section>
-      
+
           <!-- Main content -->
           <section class="content">
             <div class="container-fluid">
@@ -30,44 +30,45 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form>
+                    <form role="form" method="POST" action="/projetos">
+                    @csrf
                       <div class="card-body">
                         <div class="form-group">
                           <label for="inputDesig">Desgnação</label>
-                          <input type="text" class="form-control" id="inputDesig" placeholder="Insira a Designçao do projeto">
+                          <input type="text" class="form-control" name="inputDesig" id="inputDesig" placeholder="Insira a Designçao do projeto">
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                               <label for="selectCat">Categoria</label>
-                              <select class="form-control select2" style="width: 100%;">
+                              <select class="form-control select2" name="selectCat" id="selectCat" style="width: 100%;">
                                 <option  value="DO"selected="selected">Selecione uma Categoria</option>
-                                <option value="1">Veiculos Roboticos</option>
-                                <option value="2">Objetos e espacos Inteligentes</option>
-                                <option value="3">Outros Artefactos</option>
-                               
+
+                                @foreach ($categorias as $categoria)
+                                        <option value="{{ $categoria->id }}">{{ $categoria->designacao}}</option>
+                                @endforeach
                               </select>
                             </div>
                         <div class="form-group">
-                          <label for="inputAluno">Aluno(s) Responsavel(eis)</label>
-                          <input type="text" class="form-control" id="inputAluno" placeholder="Insira os alunos que estao a frente do projeto">
+                          <label for="inputResp">Aluno(s) Responsavel(eis)</label>
+                          <input type="text" class="form-control" name="inputResp" id="inputResp" placeholder="Insira os alunos que estao a frente do projeto">
                         </div>
                         <div class="form-group">
                             <label for="inputData">Data Inicio</label>
-                            <input type="date" class="form-control" id="inputData" placeholder="Insira a data de inicio do projeto">
+                            <input type="date" class="form-control" name="inputData" id="inputData" placeholder="Insira a data de inicio do projeto">
                           </div>
                           <div class="form-group">
                             <label for="inputGit">Github</label>
-                            <input type="text" class="form-control" id="inputGit" placeholder="Insira o Git do projeto">
+                            <input type="text" class="form-control" name="inputGit" id="inputGit" placeholder="Insira o Git do projeto">
                           </div>
                           <div class="form-group">
-                            <label>Descrição</label>
-                            <textarea class="form-control" rows="5" placeholder="Descreva aqui o projeto"></textarea>
+                            <label for="textDesc">Descrição</label>
+                            <textarea class="form-control" rows="5" name="textDesc" id="textDesc" placeholder="Descreva aqui o projeto"></textarea>
                           </div>
                         <div class="form-group">
                           <label for="inputfotos"> Fotos</label>
                           <div class="input-group">
                             <div class="custom-file">
-                              <input type="file" class="custom-file-input" id="inputfotos">
+                              <input type="file" class="custom-file-input" id="inputfotos" name="inputfotos">
                               <label class="custom-file-label" for="inputfotos">Escolha um ficheiro</label>
                             </div>
                             <div class="input-group-append">
@@ -75,17 +76,17 @@
                             </div>
                           </div>
                         </div>
-                       
+
                       <!-- /.card-body -->
-      
+
                       <div class="card-footer">
-                        <button type="submit" class="btn btn-primary" id="btnEnviar">Enviar</button>
-                        <button type="submit" class="btn btn-warning" id="btnLimpar">Limpar</button>
+                        <button type="submit" class="btn btn-primary" id="btnEnviar" name="btnEnviar">Enviar</button>
+                        <button type="submit" class="btn btn-warning" id="btnLimpar" name="btnLimpar">Limpar</button>
                       </div>
                     </form>
                   </div>
                   <!-- /.card -->
-    
+
                 </div>
                 <!--/.col (left) -->
 

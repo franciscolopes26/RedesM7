@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Robotics Code Raul</code>| Dashboard</title>
   <link href="/assets/img/favicon.png" rel="icon">
-  
+
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -193,7 +193,7 @@
         <div class="info">
           <a href="#" class="d-block"> {{ Auth::user()->name }}</a>
         </div>
-       
+
         <div class="ml-auto">
             <a class="btn btn-secondary" href="{{ route('logout') }}"
             onclick="event.preventDefault();
@@ -233,7 +233,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('projeto.create') }}" class="nav-link ">
+                <a href="{{ route('projetos.create') }}" class="nav-link ">
                   <i class="far fa-file nav-icon"></i>
                   <p>Novo Projeto</p>
                 </a>
@@ -244,7 +244,7 @@
                   <p>Listar Projetos</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
           <li class="nav-item">
@@ -268,7 +268,7 @@
                   <p>Listar membros</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
           <li class="nav-item">
@@ -292,7 +292,7 @@
                   <p>Gerir Galeria</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
           <li class="nav-item">
@@ -316,7 +316,7 @@
                   <p>Gerir  Noticias</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
           <li class="nav-item">
@@ -334,7 +334,7 @@
                   <p>Modificar Sobre nos</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
           <li class="nav-item">
@@ -352,7 +352,7 @@
                   <p>Gerir Contactos</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
         </ul>
@@ -440,20 +440,20 @@
         "language": {
             "url": "plugins/datatables/Portuguese.json"}
       });
-    
+
     });
-    $('.nav-link').click(function () { 
+    $('.nav-link').click(function () {
         $('.nav-link').removeClass('active');
         $(this).toggleClass('active');
-        
+
     });
         //Initialize Select2 Elements
         $('.select2').select2();
-        $('#btnLimpar').click(function () { 
+        $('#btnLimpar').click(function () {
             $('.select2').val('DO').trigger('change');
-            
+
         });
   </script>
-      
+
 </body>
 </html>

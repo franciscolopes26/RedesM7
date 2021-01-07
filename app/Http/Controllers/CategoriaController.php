@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Projeto;
 use App\Models\Categoria;
 use Illuminate\Http\Request;
 
-class ProjetoController extends Controller
+class CategoriaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,7 @@ class ProjetoController extends Controller
      */
     public function index()
     {
-        return view('projetos.index');
+        //
     }
 
     /**
@@ -25,8 +24,7 @@ class ProjetoController extends Controller
      */
     public function create()
     {
-        $categorias = Categoria::all();
-        return view('projetos.create', compact('categorias'));
+        //
     }
 
     /**
@@ -37,25 +35,16 @@ class ProjetoController extends Controller
      */
     public function store(Request $request)
     {
-        $projeto = new Projeto();
-        $projeto->designacao = request('inputDesig');
-        $projeto->categoria_id = request('selectCat');
-        $projeto->responsavel = request('inputResp');
-        $projeto->dataInicio = request('inputData');
-        $projeto->github = request('inputGit');
-        $projeto->descricao = request('textDesc');
-
-        $projeto->save();
-        return redirect('/projetos');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Projeto  $projeto
+     * @param  \App\Models\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function show(Projeto $projeto)
+    public function show(Categoria $categoria)
     {
         //
     }
@@ -63,10 +52,10 @@ class ProjetoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Projeto  $projeto
+     * @param  \App\Models\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function edit(Projeto $projeto)
+    public function edit(Categoria $categoria)
     {
         //
     }
@@ -75,10 +64,10 @@ class ProjetoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Projeto  $projeto
+     * @param  \App\Models\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Projeto $projeto)
+    public function update(Request $request, Categoria $categoria)
     {
         //
     }
@@ -86,10 +75,10 @@ class ProjetoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Projeto  $projeto
+     * @param  \App\Models\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Projeto $projeto)
+    public function destroy(Categoria $categoria)
     {
         //
     }
