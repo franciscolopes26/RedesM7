@@ -24,3 +24,4 @@ Route::get('/project', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/projeto/create', [App\Http\Controllers\ProjetoController::class, 'create'])->name('projeto.create');
