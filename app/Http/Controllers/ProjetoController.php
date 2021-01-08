@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Projeto;
 use App\Models\Categoria;
+use App\Models\Foto;
 use Illuminate\Http\Request;
 
 class ProjetoController extends Controller
@@ -15,7 +16,8 @@ class ProjetoController extends Controller
      */
     public function index()
     {
-        return view('projetos.index');
+        $projetos = Projeto::all();
+        return view('projetos.index', compact('projetos'));
     }
 
     /**
@@ -37,6 +39,16 @@ class ProjetoController extends Controller
      */
     public function store(Request $request)
     {
+        request()->validate([
+            'inputDesig' => 'required',
+            'selectCat' => 'required',
+            'inputResp' => 'required',
+            'inputData' => 'required',
+            'inputGit' => 'required',
+            'textDesc' => 'required'
+
+        ]);
+
         $projeto = new Projeto();
         $projeto->designacao = request('inputDesig');
         $projeto->categoria_id = request('selectCat');
@@ -46,6 +58,26 @@ class ProjetoController extends Controller
         $projeto->descricao = request('textDesc');
 
         $projeto->save();
+
+
+        $request->validate([
+            'imageFile' => 'required',
+            'imageFile.*' => 'mimes:jpeg,jpg,png,gif|max:4096'
+        ]);
+
+        if ($request->hasfile('imageFile')) {
+            foreach ($request->file('imageFile') as $file) {
+                $name = $file->getClientOriginalName();
+                $file->move(public_path() . '/uploads/', $name);
+                $imgData[] = $name;
+            }
+
+            $fileModal = new Foto();
+            $fileModal->designacao = json_encode($imgData);
+            $fileModal->projeto_id = $projeto->id;
+
+            $fileModal->save();
+        }
         return redirect('/projetos');
     }
 

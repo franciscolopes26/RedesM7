@@ -30,50 +30,115 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form role="form" method="POST" action="/projetos">
+                    <form role="form" method="POST" action="/projetos" enctype="multipart/form-data">
                     @csrf
                       <div class="card-body">
                         <div class="form-group">
                           <label for="inputDesig">Desgnação</label>
-                          <input type="text" class="form-control" name="inputDesig" id="inputDesig" placeholder="Insira a Designçao do projeto">
+                          <input type="text" class="form-control" value="{{old('inputDesig')  }}" required name="inputDesig" id="inputDesig" placeholder="Insira a Designçao do projeto">
+                            @error('inputDesig')
+                                <p class="text-danger">
+                                    {{ $errors->first('inputDesig') }}
+                                </p>
+                            @enderror
+
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                               <label for="selectCat">Categoria</label>
                               <select class="form-control select2" name="selectCat" id="selectCat" style="width: 100%;">
-                                <option  value="DO"selected="selected">Selecione uma Categoria</option>
+                                <option  value="DO" disabled selected="selected">Selecione uma Categoria</option>
 
                                 @foreach ($categorias as $categoria)
+
+
+                                    @if (old('selectCat')==$categoria->id)
+                                        <option value="{{ $categoria->id }}" selected>{{ $categoria->designacao}}</option>
+                                    @else
+                                        <option value="{{ $categoria->id }}">{{ $categoria->designacao}}</option>
+                                    @endif
+
                                         <option value="{{ $categoria->id }}">{{ $categoria->designacao}}</option>
                                 @endforeach
                               </select>
+
+                              @error('selectCat')
+                              <p class="text-danger">
+                                  {{ $errors->first('selectCat') }}
+                              </p>
+                            @enderror
+
                             </div>
                         <div class="form-group">
                           <label for="inputResp">Aluno(s) Responsavel(eis)</label>
-                          <input type="text" class="form-control" name="inputResp" id="inputResp" placeholder="Insira os alunos que estao a frente do projeto">
+
+                          <input type="text" class="form-control" value="{{ old('inputResp')  }}" name="inputResp" required id="inputResp" placeholder="Insira os alunos que estao a frente do projeto">
+                          @error('inputResp')
+                              <p class="text-danger">
+                                  {{ $errors->first('inputResp') }}
+                              </p>
+                            @enderror
+
+
                         </div>
                         <div class="form-group">
                             <label for="inputData">Data Inicio</label>
-                            <input type="date" class="form-control" name="inputData" id="inputData" placeholder="Insira a data de inicio do projeto">
-                          </div>
+                            <input type="date" class="form-control" value="{{ old('inputData')  }}" name="inputData" required id="inputData" placeholder="Insira a data de inicio do projeto">
+
+                            @error('inputData')
+                            <p class="text-danger">
+                                {{ $errors->first('inputData') }}
+                            </p>
+                          @enderror
+
+                        </div>
                           <div class="form-group">
                             <label for="inputGit">Github</label>
-                            <input type="text" class="form-control" name="inputGit" id="inputGit" placeholder="Insira o Git do projeto">
-                          </div>
+                            <input type="text" class="form-control" value="{{ old('inputGit')  }}"  name="inputGit" required id="inputGit" placeholder="Insira o Git do projeto">
+
+                            @error('inputGit')
+                            <p class="text-danger">
+                                {{ $errors->first('inputGit') }}
+                            </p>
+                          @enderror
+
+                        </div>
                           <div class="form-group">
                             <label for="textDesc">Descrição</label>
-                            <textarea class="form-control" rows="5" name="textDesc" id="textDesc" placeholder="Descreva aqui o projeto"></textarea>
-                          </div>
+                            <textarea class="form-control" rows="5" name="textDesc" required id="textDesc" placeholder="Descreva aqui o projeto"> {{ old('textDesc')  }}</textarea>
+                            @error('textDesc')
+                            <p class="text-danger">
+                                {{ $errors->first('textDesc') }}
+                            </p>
+                          @enderror
+
+                        </div>
                         <div class="form-group">
-                          <label for="inputfotos"> Fotos</label>
+                          <label> Fotos</label>
+                          <div class="user-image mb-3 text-center">
+                            <div class="imgPreview">{{ old('imageFile') }} </div>
+                          </div>
                           <div class="input-group">
                             <div class="custom-file">
-                              <input type="file" class="custom-file-input" id="inputfotos" name="inputfotos">
-                              <label class="custom-file-label" for="inputfotos">Escolha um ficheiro</label>
+                              <input type="file" class="custom-file-input"   id="images" name="imageFile[]" multiple="multiple">
+                              <label class="custom-file-label" for="images">Escolha um ficheiro</label>
                             </div>
                             <div class="input-group-append">
                               <span class="input-group-text">Upload Fotos</span>
                             </div>
+                            @error('imageFile')
+                                <p class="text-danger">
+                                 {{ $errors->first('imageFile') }}
+                               </p>
+                            @enderror
+
+                          @error('imageFile.*')
+                              @foreach ($errors->all() as $error )
+                                 <p class="text-danger">
+                                     {{ $errors }}
+                                 </p>
+                              @endforeach
+                            @enderror
                           </div>
                         </div>
 
@@ -81,7 +146,7 @@
 
                       <div class="card-footer">
                         <button type="submit" class="btn btn-primary" id="btnEnviar" name="btnEnviar">Enviar</button>
-                        <button type="submit" class="btn btn-warning" id="btnLimpar" name="btnLimpar">Limpar</button>
+                        <button type="button" class="btn btn-warning" id="btnLimpar" name="btnLimpar">Limpar</button>
                       </div>
                     </form>
                   </div>

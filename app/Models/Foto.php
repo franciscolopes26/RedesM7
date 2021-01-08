@@ -11,4 +11,8 @@ class Foto extends Model
     protected $fillable = [
         'designacao'
     ];
+    public function projeto()
+    {
+        return $this->belongsTo(Projeto::class);
+    }
 }

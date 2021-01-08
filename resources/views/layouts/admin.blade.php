@@ -353,6 +353,29 @@
                 </a>
               </li>
 
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-tools"></i>
+                  <p>
+                    Inventario
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="./index.html" class="nav-link ">
+                      <i class="far fa-user nav-icon"></i>
+                      <p>Novo Item</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="./index2.html" class="nav-link">
+                      <i class="fas fa-list nav-icon"></i>
+                      <p>Listar Itens disponiveis</p>
+                    </a>
+                  </li>
             </ul>
           </li>
         </ul>
@@ -451,8 +474,37 @@
         $('.select2').select2();
         $('#btnLimpar').click(function () {
             $('.select2').val('DO').trigger('change');
+            $('div.imgPreview').empty();
+            $('p.text-danger').remove();
+            $('input, textarea').val('');
+            
 
         });
+
+        $(function() {
+        // Multiple images preview with JavaScript
+        var multiImgPreview = function(input, imgPreviewPlaceholder) {
+
+            if (input.files) {
+                var filesAmount = input.files.length;
+
+                for (i = 0; i < filesAmount; i++) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(event) {
+                        $($.parseHTML('<img width="200" class="img-thumbnail">')).attr('src', event.target.result).appendTo(imgPreviewPlaceholder);
+                    }
+
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+
+        };
+
+        $('#images').on('change', function() {
+            multiImgPreview(this, 'div.imgPreview');
+        });
+    });    
   </script>
 
 </body>
