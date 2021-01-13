@@ -10,7 +10,7 @@
                 <div class="col-sm-6">
                   <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="/home">Home</a></li>
-                    <li class="breadcrumb-item active"> Novo Projeto</li>
+                    <li class="breadcrumb-item active"> Editar Projeto</li>
                   </ol>
                 </div>
               </div>
@@ -26,16 +26,17 @@
                   <!-- general form elements -->
                   <div class="card card-primary">
                     <div class="card-header">
-                      <h3 class="card-title">Novo Projeto</h3>
+                      <h3 class="card-title">Editar Projeto</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form role="form" method="POST" action="/projetos" enctype="multipart/form-data">
+                    <form role="form" method="POST" action="/projetos/{{ $projeto->id }}" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                       <div class="card-body">
                         <div class="form-group">
                           <label for="inputDesig">Desgnação</label>
-                          <input type="text" class="form-control" value="{{old('inputDesig')  }}" required name="inputDesig" id="inputDesig" placeholder="Insira a Designçao do projeto">
+                          <input type="text" class="form-control" value="{{empty(old('inputDesig')) ? $projeto->designacao :old('inputDesig')   }}" required name="inputDesig" id="inputDesig" placeholder="Insira a Designçao do projeto">
                             @error('inputDesig')
                                 <p class="text-danger">
                                     {{ $errors->first('inputDesig') }}
@@ -52,7 +53,7 @@
                                 @foreach ($categorias as $categoria)
 
 
-                                    @if (old('selectCat')==$categoria->id)
+                                    @if ($projeto->categoria_id == $categoria->id)
                                         <option value="{{ $categoria->id }}" selected>{{ $categoria->designacao}}</option>
                                     @else
                                         <option value="{{ $categoria->id }}">{{ $categoria->designacao}}</option>
@@ -72,7 +73,7 @@
                         <div class="form-group">
                           <label for="inputResp">Aluno(s) Responsavel(eis)</label>
 
-                          <input type="text" class="form-control" value="{{ old('inputResp')  }}" name="inputResp" required id="inputResp" placeholder="Insira os alunos que estao a frente do projeto">
+                          <input type="text" class="form-control" value="{{empty(old('inputResp')) ? $projeto->responsavel :old('inputResp')   }}" name="inputResp" required id="inputResp" placeholder="Insira os alunos que estao a frente do projeto">
                           @error('inputResp')
                               <p class="text-danger">
                                   {{ $errors->first('inputResp') }}
@@ -83,7 +84,7 @@
                         </div>
                         <div class="form-group">
                             <label for="inputData">Data Inicio</label>
-                            <input type="date" class="form-control" value="{{ old('inputData')  }}" name="inputData" required id="inputData" placeholder="Insira a data de inicio do projeto">
+                            <input type="date" class="form-control" value="{{empty(old('inputData')) ? $projeto->dataInicio :old('inputData')}}" name="inputData" required id="inputData" placeholder="Insira a data de inicio do projeto">
 
                             @error('inputData')
                             <p class="text-danger">
@@ -94,7 +95,7 @@
                         </div>
                           <div class="form-group">
                             <label for="inputGit">Github</label>
-                            <input type="text" class="form-control" value="{{ old('inputGit')  }}"  name="inputGit" required id="inputGit" placeholder="Insira o Git do projeto">
+                            <input type="text" class="form-control" value="{{empty(old('inputGit')) ? $projeto->github :old('inputGit')}}" name="inputGit" required id="inputGit" placeholder="Insira o Git do projeto">
 
                             @error('inputGit')
                             <p class="text-danger">
@@ -105,7 +106,7 @@
                         </div>
                           <div class="form-group">
                             <label for="textDesc">Descrição</label>
-                            <textarea class="form-control" rows="5" name="textDesc" required id="textDesc" placeholder="Descreva aqui o projeto"> {{ old('textDesc')  }}</textarea>
+                            <textarea class="form-control" rows="5" name="textDesc" required id="textDesc" placeholder="Descreva aqui o projeto"> {{empty(old('textDesc')) ? $projeto->descricao :old('textDesc')}}"</textarea>
                             @error('textDesc')
                             <p class="text-danger">
                                 {{ $errors->first('textDesc') }}
@@ -116,7 +117,22 @@
                         <div class="form-group">
                           <label> Fotos</label>
                           <div class="user-image mb-3 text-center">
-                            <div class="imgPreview">{{ old('imageFile') }} </div>
+                            <div class="imgPreview">
+                        @foreach ($designacoes as $designacao)
+                            @if (Storage::exists('public/uploads/'.$designacao))
+                                    
+                               
+                                <span class="pic" id="{{ $loop->index }}">
+                                    <a href="javascript:void(0)" onclick="deletefoto('{{ $foto->id }}', '{{ $designacao }}', '{{ $loop->index }}')">
+                                                <i class="fas fa-minus-circle close text-danger"></i>
+                                    </a>
+                                    <img width="200" class="img-thumbnail" src="{{ asset('storage/uploads'). "/".$designacao }}" alt="">    
+                                
+                                </span>
+                            @endif
+                        @endforeach
+                            
+                            </div>
                           </div>
                           <div class="input-group">
                             <div class="custom-file">

@@ -5,10 +5,24 @@
   <section class="content">
     <div class="container-fluid">
       <!-- Small boxes (Stat box) -->
-     
+
       <!-- /.row -->
       <!-- Main row -->
       <div class="row">
+          <div class="col-md-12">
+            @if (Session::has('message'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+{{ Session::get('message') }}
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+</button>
+
+            </div>
+
+            @endif
+
+
+          </div>
         <!-- Left col -->
         <section class="col-lg-12 connectedSortable">
           <!-- Custom tabs (Charts with tabs)-->
@@ -27,17 +41,19 @@
                         <th>Autor(es)</th>
                         <th>Data de Início</th>
                         <th>Github</th>
+                        <th>Eliminar</th>
                       </tr>
                       </thead>
                       <tbody>
-                      
+
                       @foreach ($projetos as $projeto)
                       <tr>
-                        <td>{{ $projeto->designacao }}</td>
+                        <td><a href="/projetos/{{ $projeto->id }}/edit">{{ $projeto->designacao }}</a></td>
                         <td>{{ $projeto->Categoria->designacao }}</td>
                         <td>{{ $projeto->responsavel }}</td>
                         <td>{{ $projeto->dataInicio }}</td>
-                        <td>{{ $projeto->github }}</td>
+                        <td><a href="{{ $projeto->github }}">{{ $projeto->designacao }}</a></td>
+                        <td class="text-center"><i class="fas fa-trash text-danger"></i></td>
                       </tr>
                       @endforeach
                       </tbody>
@@ -51,6 +67,6 @@
       </div>
       <!-- /.row (main row) -->
     </div><!-- /.container-fluid -->
-  </section> 
+  </section>
 
 @endsection

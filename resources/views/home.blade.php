@@ -34,7 +34,7 @@
             <div class="icon">
               <i class="fas fa-project-diagram"></i>
             </div>
-            <a href="#" class="small-box-footer">Listar <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="/projetos" class="small-box-footer">Listar <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->

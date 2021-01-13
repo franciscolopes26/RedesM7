@@ -33,6 +33,23 @@
   <link rel="stylesheet" href="/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="/plugins/summernote/summernote-bs4.min.css">
+
+  <style>
+      .pic{
+            display: inline-block;
+            margin: 10px 10x  0 0;
+            position: relative;
+        }
+
+        .close{
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 9999;
+        }
+
+
+  </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -178,7 +195,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link a1-1">
+    <a href="/home" class="brand-link a1-1">
       <img src="/assets/img/logoadmin.png" alt="Logo" class="brand-image" style="opacity: .8">
       <span class="brand-text font-weight-light">Robotics Code Raul</span>
     </a>
@@ -239,7 +256,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
+                <a href="/projetos" class="nav-link">
                   <i class="fas fa-list nav-icon"></i>
                   <p>Listar Projetos</p>
                 </a>
@@ -492,7 +509,9 @@
                     var reader = new FileReader();
 
                     reader.onload = function(event) {
-                        $($.parseHTML('<img width="200" class="img-thumbnail">')).attr('src', event.target.result).appendTo(imgPreviewPlaceholder);
+                      
+                        var img= $.parseHTML('<span class="pic new"></span> <img width="200" class="img-thumbnail" src="'+ event.target.result + '"</span>');
+                        $(img).appendTo(imgPreviewPlaceholder);
                     }
 
                     reader.readAsDataURL(input.files[i]);
@@ -502,9 +521,24 @@
         };
 
         $('#images').on('change', function() {
+            $('.new').remove();
             multiImgPreview(this, 'div.imgPreview');
         });
     });    
+
+    function deletefoto(foto,designacao,id){
+        $('#'+id).remove();
+        $.ajax({
+            type: "delete",
+            url: "/fotos/" + foto + "/" + designacao,
+            data: {_token: ' {{ csrf_token() }}'},
+            dataType: "json",
+            success: function (response) {
+                console.log("ok")
+                
+            }
+        });
+    }
   </script>
 
 </body>
