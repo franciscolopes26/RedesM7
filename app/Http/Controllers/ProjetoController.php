@@ -190,6 +190,10 @@ class ProjetoController extends Controller
      */
     public function destroy(Projeto $projeto)
     {
-        //
+        $foto = Foto::where('projeto_id', $projeto->id)->first();
+        $foto->delete();
+        $projeto->delete();
+
+        return redirect('/projetos')->with('message', 'projeto eliminado com sucesso');
     }
 }

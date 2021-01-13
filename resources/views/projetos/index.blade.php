@@ -53,7 +53,15 @@
                         <td>{{ $projeto->responsavel }}</td>
                         <td>{{ $projeto->dataInicio }}</td>
                         <td><a href="{{ $projeto->github }}">{{ $projeto->designacao }}</a></td>
-                        <td class="text-center"><i class="fas fa-trash text-danger"></i></td>
+                        <td class="text-center">
+                            <form role="form" method="POST" action="/projetos/{{ $projeto->id }}" >
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" name="remove" class="link" style="background-color: transparent; border:none;">
+                            <i class="fas fa-trash text-danger" ></i>
+                                </button>
+                        
+                        </td>
                       </tr>
                       @endforeach
                       </tbody>

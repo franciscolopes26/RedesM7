@@ -30,3 +30,4 @@ Route::get('/projetos/create', [App\Http\Controllers\ProjetoController::class, '
 Route::get('/projetos/{projeto}/edit', [App\Http\Controllers\ProjetoController::class, 'edit']);
 Route::get('/projetos/{projeto}', [App\Http\Controllers\ProjetoController::class, 'update']);
 Route::delete('/fotos/{foto}/{descricao}', [App\Http\Controllers\FotoController::class, 'destroy']);
+Route::delete('/projetos/{projeto}', [App\Http\Controllers\ProjetoController::class, 'destroy']);
