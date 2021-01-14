@@ -7,15 +7,16 @@
   <div id="content">
             
     <div id="slider">
-
-        <img src="images/image1.jpg" alt="This is just" data-url="#1">
-        <img src="images/image2.jpg" alt="a demo of" data-url="#2">
-        <img src="images/image3.jpg" alt="a full slider" data-url="#3">
-        <img src="images/image4.jpg" alt="and it's really beautiful" data-url="#4">
+      {{-- assets/img/IMG_3879.jpg
+      assets/img/IMG_2304.jpg --}}
+        <img src="assets/img/IMG_3879.jpg" alt="A equipa" data-url="#1">
+        <img src="assets/img/IMG_2304.jpg " alt="Feira MakerFaire19" data-url="#2">
+        <img src="assets/img/slide4.jpg" alt="BotOlympics20" data-url="#3">
+        <img src="assets/img/slide5.jpg" alt="Premios MakerFaire19" data-url="#4">
 
     </div>
 
-   <p class="c">Images by Unsplash.</p>
+   <p class="c">Power by YourSystemIT</p>
 
 </div>
 

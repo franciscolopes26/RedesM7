@@ -78,8 +78,9 @@ h6 {
   --------------------------------------------------------------*/
 #header {
     z-index: 997;
-    transition: all 0.5s;
+   /*transition: all 0.5s;*/
     padding: 22px 0;
+    background-color: whitesmoke;
 }
 
 #header.header-scrolled {

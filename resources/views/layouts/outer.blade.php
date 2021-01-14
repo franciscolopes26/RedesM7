@@ -26,9 +26,10 @@
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
+  <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+
   <link href="assets/css/style.css" rel="stylesheet">
 
-  <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="assets/styles/main.css">
   <script src="components/modernizr/modernizr.js"></script>
   <!-- =======================================================
