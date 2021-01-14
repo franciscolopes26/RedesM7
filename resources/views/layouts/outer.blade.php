@@ -28,6 +28,9 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
+  <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="assets/styles/main.css">
+  <script src="components/modernizr/modernizr.js"></script>
   <!-- =======================================================
   * Template Name: Vesperr - v3.0.2
   * Template URL: https://bootstrapmade.com/vesperr-free-bootstrap-template/
@@ -80,7 +83,7 @@
             <!-- You can delete the links only if you purchased the pro version. -->
             <!-- Licensing information: https://bootstrapmade.com/license/ -->
             <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/vesperr-free-bootstrap-template/ -->
-           
+
           </div>
         </div>
         <div class="col-lg-6">
@@ -108,6 +111,10 @@
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/venobox/venobox.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/js/classie.js"></script>
+        <script src="assets/js/TimelineMax.min.js"></script>
+        <script src="assets/js/TweenMax.min.js"></script>
+        <script src="assets/js/main2.js"></script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>

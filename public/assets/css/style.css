@@ -4,6 +4,9 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
+/*--------------------------------------------------------------
+# Pagina inicial slide by YourSystem
+--------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
 # General
@@ -516,7 +519,7 @@ section {
 
 .section-title h2::before,
 .section-title h2::after {
-    content: '';
+    content: "";
     width: 50px;
     height: 2px;
     background: #3498db;
@@ -730,7 +733,7 @@ section {
 }
 
 .services .icon-box::before {
-    content: '';
+    content: "";
     position: absolute;
     background: #e1f0fa;
     right: -60px;
