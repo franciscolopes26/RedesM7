@@ -9,14 +9,46 @@
     <div id="slider">
       {{-- assets/img/IMG_3879.jpg
       assets/img/IMG_2304.jpg --}}
-        <img src="assets/img/IMG_3879.jpg" alt="A equipa" data-url="#1">
+        <img src="assets/img/IMG_3879.jpg" alt="A equipa" data-url="#1" style="color: black !important">
         <img src="assets/img/IMG_2304.jpg " alt="Feira MakerFaire19" data-url="#2">
         <img src="assets/img/slide4.jpg" alt="BotOlympics20" data-url="#3">
         <img src="assets/img/slide5.jpg" alt="Premios MakerFaire19" data-url="#4">
 
     </div>
 
-   <p class="c">Power by YourSystemIT</p>
+   <section id="clients" class="clients clients">
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-lg-2 col-md-4 col-6">
+          <img src="assets/img/clients/client-1.png" class="img-fluid" alt="" data-aos="zoom-in">
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-6">
+          <img src="assets/img/clients/client-2.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="100">
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-6">
+          <img src="assets/img/clients/client-3.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="200">
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-6">
+          <img src="assets/img/clients/client-4.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="300">
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-6">
+          <img src="assets/img/clients/client-5.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="400">
+        </div>
+
+        <div class="col-lg-2 col-md-4 col-6">
+          <img src="assets/img/clients/client-6.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="500">
+        </div>
+
+      </div>
+
+    </div>
+  </section><!-- End Clients Section -->
 
 </div>
 
@@ -24,7 +56,7 @@
   <main id="main">
 
     <!-- ======= Clients Section ======= -->
-    <section id="clients" class="clients clients">
+    {{-- <section id="clients" class="clients clients">
       <div class="container">
 
         <div class="row">
@@ -56,7 +88,7 @@
         </div>
 
       </div>
-    </section><!-- End Clients Section -->
+    </section><!-- End Clients Section --> --}}
 
     <!-- ======= About Us Section ======= -->
     <section id="about" class="about">
@@ -229,12 +261,12 @@
          @endswitch
            
             <div class="portfolio-wrap">
-              <img src="{{asset('storage/uploads')."/".json_decode($projeto->fotodes[0])}}" class="img-fluid" alt="">
+               <img src="{{asset('storage/uploads')."/".json_decode($projeto->fotodes)[0]}}" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>{{$projeto->designacao}}</h4>
                 <p>{{$projeto->responsavel}}</p>
                 <div class="portfolio-links">
-                  <a href="{{asset('storage/uploads')."/".json_decode($projeto->fotodes[0])}}" data-gall="portfolioGallery" class="venobox" title="App 1"><i class="bx bx-plus"></i></a>
+                   <a href="{{asset('storage/uploads')."/".json_decode($projeto->fotodes)[0]}}" data-gall="portfolioGallery" class="venobox" title="App 1"><i class="bx bx-plus"></i></a> 
                   <a href="/projetos/{{$projeto->id }}" title="Saber Mais"><i class="bx bx-link"></i></a>
                 </div>
               </div>

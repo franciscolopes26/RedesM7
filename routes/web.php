@@ -16,15 +16,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $projetos = DB::table('projetos')
-        ->leftJoin('fotos', 'projetos_id', '=', 'projeto_id')
+        ->leftJoin('fotos', 'projetos.id', '=', 'projeto_id')
         ->select('projetos.*', 'fotos.designacao as fotodes')
         ->get();
+
+
     return view('welcome', compact('projetos'));
 });
 
-Route::get('/project', function () {
-    return view('project');
-})->name('project');
+
 
 Auth::routes();
 
@@ -34,6 +34,6 @@ Route::post('/projetos', [App\Http\Controllers\ProjetoController::class, 'store'
 Route::get('/projetos/create', [App\Http\Controllers\ProjetoController::class, 'create'])->middleware('auth')->name('projetos.create');
 Route::get('/projetos/{projeto}', [App\Http\Controllers\ProjetoController::class, 'show']);
 Route::get('/projetos/{projeto}/edit', [App\Http\Controllers\ProjetoController::class, 'edit'])->middleware('auth');
-Route::get('/projetos/{projeto}', [App\Http\Controllers\ProjetoController::class, 'update']);
+Route::put('/projetos/{projeto}', [App\Http\Controllers\ProjetoController::class, 'update']);
 Route::delete('/fotos/{foto}/{descricao}', [App\Http\Controllers\FotoController::class, 'destroy']);
 Route::delete('/projetos/{projeto}', [App\Http\Controllers\ProjetoController::class, 'destroy']);

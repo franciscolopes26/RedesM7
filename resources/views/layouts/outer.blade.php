@@ -10,8 +10,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="/assets/img/favicon.png" rel="icon">
+  <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -31,7 +31,7 @@
   <link href="/assets/css/style.css" rel="stylesheet">
 
   <link rel="stylesheet" href="assets/styles/main.css">
-  <script src="components/modernizr/modernizr.js"></script>
+  <script src="/components/modernizr/modernizr.js"></script>
   <!-- =======================================================
   * Template Name: Vesperr - v3.0.2
   * Template URL: https://bootstrapmade.com/vesperr-free-bootstrap-template/
@@ -57,7 +57,7 @@
           <li class="active"><a href="/">Inicio</a></li>
           <li><a href="#about"> Sobre nós</a></li>
          <!-- <li><a href="#services">Services</a></li> -->
-          <li><a href="#portfolio">Projetos</a></li>
+          <li><a href="/#portfolio">Projetos</a></li>
           <li><a href="#team">Equipa</a></li>
           <li><a href="#gallery">Galeria</a></li>
            <li><a href="#news">Noticias</a></li>

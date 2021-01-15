@@ -100,8 +100,10 @@ class ProjetoController extends Controller
      */
     public function show(Projeto $projeto)
     {
-        //
-        return view('projetos.show');
+        $foto = Foto::where('projeto_id', $projeto->id)->first();
+        $fotos = json_decode($foto->designacao);
+
+        return view('projetos.show', compact('projeto', 'fotos'));
     }
 
     /**
