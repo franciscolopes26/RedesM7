@@ -194,42 +194,55 @@
 
 
     <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio">
+    <section id="projetos" class="portfolio">
       <div class="container">
 
         <div class="section-title" data-aos="fade-up">
-          <h2>Portfolio</h2>
-          <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem</p>
+          <h2>Projetos</h2>
+          <p>Projetos desenvolvidos pelos alunos no Clube de Programacao e Robotica</p>
         </div>
 
         <div class="row" data-aos="fade-up" data-aos-delay="200">
           <div class="col-lg-12 d-flex justify-content-center">
             <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">App</li>
-              <li data-filter=".filter-card">Card</li>
-              <li data-filter=".filter-web">Web</li>
+              <li data-filter="*" class="filter-active">Todos</li>
+              <li data-filter=".filter-veic">Veiculos Roboticos</li>
+              <li data-filter=".filter-obj">Objetos e Espacos Inteligentes</li>
+              <li data-filter=".filter-outros">Outros Artefactos</li>
             </ul>
           </div>
         </div>
 
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="400">
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          @foreach ($projetos as $projeto)
+              
+         @switch($projeto->categoria_id)
+             @case(1)
+             <div class="col-lg-4 col-md-6 portfolio-item filter-veic">
+                 @break
+             @case(2)
+             <div class="col-lg-4 col-md-6 portfolio-item filter-obj">
+                 @break
+             @default
+             <div class="col-lg-4 col-md-6 portfolio-item filter-outros">
+         @endswitch
+           
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
+              <img src="{{asset('storage/uploads')."/".json_decode($projeto->fotodes[0])}}" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <h4>App 1</h4>
-                <p>App</p>
+                <h4>{{$projeto->designacao}}</h4>
+                <p>{{$projeto->responsavel}}</p>
                 <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-1.jpg" data-gall="portfolioGallery" class="venobox" title="App 1"><i class="bx bx-plus"></i></a>
-                  <a href="{{ route('project') }}" title="More Details"><i class="bx bx-link"></i></a>
+                  <a href="{{asset('storage/uploads')."/".json_decode($projeto->fotodes[0])}}" data-gall="portfolioGallery" class="venobox" title="App 1"><i class="bx bx-plus"></i></a>
+                  <a href="/projetos/{{$projeto->id }}" title="Saber Mais"><i class="bx bx-link"></i></a>
                 </div>
               </div>
             </div>
+            @endforeach
           </div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+          {{--<div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">
               <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
@@ -339,7 +352,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> --}}
 
         </div>
 

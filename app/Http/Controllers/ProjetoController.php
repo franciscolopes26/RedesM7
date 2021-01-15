@@ -101,6 +101,7 @@ class ProjetoController extends Controller
     public function show(Projeto $projeto)
     {
         //
+        return view('projetos.show');
     }
 
     /**
