@@ -4324,7 +4324,8 @@ th.hide-for-touch {
 #content #slider .navigation ul li .li__info-mask .mask__infoContainer,
 #content #slider .navigation ul li .li__hoverLine {
     width: 100%;
-    //height: 70%;
+    height: 14%;
+    color: #000;
 }
 
 /* line 83, ../sass/base/_mymixins.scss */
@@ -4337,8 +4338,7 @@ th.hide-for-touch {
 
 #content {
     height: 90vh;
-    color:Black !important;
-    
+    color: Black !important;
 }
 
 /* line 87, ../sass/base/_mymixins.scss */
@@ -4412,6 +4412,7 @@ ul,
 li {
     margin: 0;
     padding: 0;
+    color: #000;
 }
 
 /* line 15, ../sass/modules/_global.scss */
@@ -4497,6 +4498,7 @@ body {
     /* Main images navigation */
     /* Background Images (Blur effect) */
     /* Navigation styles */
+    color: #000;
 }
 
 /* line 45, ../sass/modules/_global.scss */
@@ -4552,7 +4554,7 @@ body {
     position: absolute;
     bottom: 0;
     left: 0;
-    color: white;
+    color: black;
     z-index: 2;
 }
 
@@ -4570,6 +4572,7 @@ body {
     overflow: hidden;
     cursor: pointer;
     position: relative;
+    color: black;
 }
 
 /* line 104, ../sass/modules/_global.scss */
@@ -4582,6 +4585,7 @@ body {
 
 #content #slider .navigation ul li:hover .li__info {
     opacity: 0.9 !important;
+    color: black;
 }
 
 /* line 110, ../sass/modules/_global.scss */
@@ -4609,13 +4613,14 @@ body {
 
 /* line 129, ../sass/modules/_global.scss */
 
+/*color para mudar*/
 #content #slider .navigation ul li .li__info h5,
 #content #slider .navigation ul li .li__info-mask .mask__infoContainer h5 {
     font-size: 12px;
     font-style: normal;
     font-weight: 300;
     letter-spacing: 0px;
-    color: white;
+    color: black;
     float: left;
     -ms-transform: rotate(-90deg);
     transform: rotate(-90deg);
@@ -4631,7 +4636,7 @@ body {
     font-style: normal;
     font-weight: 400;
     letter-spacing: 0px;
-    color: white;
+    color: black;
     float: left;
     padding-left: 6px;
     text-transform: uppercase;
