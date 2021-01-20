@@ -36,7 +36,7 @@
                       <div class="card-body">
                         <div class="form-group">
                           <label for="inputDesig">Desgnação</label>
-                          <input type="text" class="form-control" value="{{empty(old('inputDesig')) ? $projeto->designacao :old('inputDesig')   }}" required name="inputDesig" id="inputDesig" placeholder="Insira a Designçao do projeto">
+                          <input type="text" class="form-control" onkeypress="return /[A-Za-z\s]/i.test(event.key)" value="{{empty(old('inputDesig')) ? $projeto->designacao :old('inputDesig')   }}" required name="inputDesig" id="inputDesig" placeholder="Insira a Designçao do projeto">
                             @error('inputDesig')
                                 <p class="text-danger">
                                     {{ $errors->first('inputDesig') }}
@@ -120,18 +120,18 @@
                             <div class="imgPreview">
                         @foreach ($designacoes as $designacao)
                             @if (Storage::exists('public/uploads/'.$designacao))
-                                    
-                               
+
+
                                 <span class="pic" id="{{ $loop->index }}">
                                     <a href="javascript:void(0)" onclick="deletefoto('{{ $foto->id }}', '{{ $designacao }}', '{{ $loop->index }}')">
                                                 <i class="fas fa-minus-circle close text-danger"></i>
                                     </a>
-                                    <img width="200" class="img-thumbnail" src="{{ asset('storage/uploads'). "/".$designacao }}" alt="">    
-                                
+                                    <img width="200" class="img-thumbnail" src="{{ asset('storage/uploads'). "/".$designacao }}" alt="">
+
                                 </span>
                             @endif
                         @endforeach
-                            
+
                             </div>
                           </div>
                           <div class="input-group">

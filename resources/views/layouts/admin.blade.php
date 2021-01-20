@@ -208,12 +208,12 @@
           <img src="/dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block"> 
-            
+          <a href="#" class="d-block">
+
             @auth
             {{ Auth::user()->name }}</a>
             @endauth
-           
+
         </div>
 
         <div class="ml-auto">
@@ -496,10 +496,10 @@
         $('.select2').select2();
         $('#btnLimpar').click(function () {
             $('.select2').val('DO').trigger('change');
-            $('div.imgPreview').empty();
+            $('.new').remove();
             $('p.text-danger').remove();
-            $('input, textarea').val('');
-            
+            $('input[type=text],input[type=data], textarea').val('');
+
 
         });
 
@@ -514,7 +514,7 @@
                     var reader = new FileReader();
 
                     reader.onload = function(event) {
-                      
+
                         var img= $.parseHTML('<span class="pic new"></span> <img width="200" class="img-thumbnail" src="'+ event.target.result + '"</span>');
                         $(img).appendTo(imgPreviewPlaceholder);
                     }
@@ -529,7 +529,7 @@
             $('.new').remove();
             multiImgPreview(this, 'div.imgPreview');
         });
-    });    
+    });
 
     function deletefoto(foto,designacao,id){
         $('#'+id).remove();
@@ -540,7 +540,7 @@
             dataType: "json",
             success: function (response) {
                 console.log("ok")
-                
+
             }
         });
     }

@@ -248,7 +248,9 @@
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="400">
 
           @foreach ($projetos as $projeto)
+          @if (json_decode($projeto->fotodes)!=[])
               
+         
          @switch($projeto->categoria_id)
              @case(1)
              <div class="col-lg-4 col-md-6 portfolio-item filter-veic">
@@ -271,8 +273,11 @@
                 </div>
               </div>
             </div>
-            @endforeach
+           
           </div>
+          @endif
+              
+           @endforeach
 
           {{--<div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">

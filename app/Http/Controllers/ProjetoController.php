@@ -6,6 +6,7 @@ use App\Models\Projeto;
 use App\Models\Categoria;
 use App\Models\Foto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProjetoController extends Controller
 {
@@ -64,7 +65,7 @@ class ProjetoController extends Controller
             // 'imageFile' => 'required',
             'imageFile.*' => 'mimes:jpeg,jpg,png,gif|max:4096'
         ]);
-
+        $fileModal = new Foto();
         if ($request->hasfile('imageFile')) {
 
 
@@ -82,13 +83,14 @@ class ProjetoController extends Controller
                 $imgData[] = $name;
                 $i++;
             }
-
-            $fileModal = new Foto();
-            $fileModal->designacao = json_encode($imgData);
-            $fileModal->projeto_id = $projeto->id;
-
-            $fileModal->save();
+        } else {
+            $imgData = [];
         }
+
+        $fileModal->designacao = json_encode($imgData);
+        $fileModal->projeto_id = $projeto->id;
+
+        $fileModal->save();
         return redirect('/projetos')->with('message', 'Projeto inserido com sucesso!');
     }
 
@@ -160,7 +162,10 @@ class ProjetoController extends Controller
         if ($request->hasfile('imageFile')) {
             $fileModal = Foto::where('projeto_id', $projeto->id)->first();
             $fotos = ($fileModal) ? json_decode($fileModal->designacao) : [];
-            $i = count($fotos) + 1;
+            $i = 1;
+            if (count($fotos) > 0) {
+                $i = (int) filter_var($fotos[count($fotos) - 1], FILTER_SANITIZE_NUMBER_INT) + 1;
+            }
 
 
             foreach ($request->file('imageFile') as $file) {
@@ -193,8 +198,11 @@ class ProjetoController extends Controller
      */
     public function destroy(Projeto $projeto)
     {
-        $foto = Foto::where('projeto_id', $projeto->id)->first();
-        $foto->delete();
+        $fileModal = Foto::where('projeto_id', $projeto->id)->first();
+        $fotos = ($fileModal) ? json_decode($fileModal->designacao) : [];
+        foreach ($fotos as $foto) {
+            Storage::delete('public/uploads/' . $foto);
+        }
         $projeto->delete();
 
         return redirect('/projetos')->with('message', 'projeto eliminado com sucesso');

@@ -35,7 +35,7 @@
                       <div class="card-body">
                         <div class="form-group">
                           <label for="inputDesig">Desgnação</label>
-                          <input type="text" class="form-control" value="{{old('inputDesig')  }}" required name="inputDesig" id="inputDesig" placeholder="Insira a Designçao do projeto">
+                          <input type="text" class="form-control" onkeypress="return /[A-Za-z\s]/i.test(event.key)" value="{{old('inputDesig')  }}" required name="inputDesig" id="inputDesig" placeholder="Insira a Designçao do projeto">
                             @error('inputDesig')
                                 <p class="text-danger">
                                     {{ $errors->first('inputDesig') }}
